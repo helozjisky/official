@@ -1,6 +1,6 @@
 <template>
   <div id="home" class="root">
-    <div id="canvas"></div>
+    <div id="bg"></div>
     <div class="moon"></div>
     <div class="copy"></div>
     <div class="scroll" v-scroll-to="'#policy'"></div>
@@ -8,70 +8,71 @@
 </template>
 
 <script>
-  import Fish from '~/components/Fish.js'
-
+  import Fish from '~/assets/Fish.js'
   export default{
     mounted(){
-      const sketch = (p) => {
-        p.preload = this.preload(p)
-        p.setup = this.setup(p)
-        p.draw = this.draw(p)
-      }
-      const p5 = new this.$p5(sketch)
-      this.width = window.innerWidth + this.marginX
-      this.height = window.innerHeight
-      this.p5 = p5
-      window.addEventListener('resize', this.resizeCanvas)
+      this.p5 = new this.$p5(this.sketch)
+      this.initWindowSize()
+      window.addEventListener('resize', this.onResize)
     },
     beforeDestroy () {
-      window.removeEventListener('resize', this.resizeCanvas)
+      window.removeEventListener('resize', this.onResize)
     },
     data(){
       return {
-        fishImages: [],
-        fish: [],
+        fishImageMap: [],
+        fishes: [],
         fishType: 5,
         width: null,
         height: null,
-        marginX : 100,
-        p5:null
+        p5: null,
+        render: null,
       }
     },
     methods: {
-      resizeCanvas(){
-        this.width = window.innerWidth + this.marginX
+      sketch (p) {
+        p.preload = this.preload(p)
+        p.setup = this.setup(p)
+        p.draw = this.draw(p)
+      },
+      initWindowSize () {
+        this.width = window.innerWidth
         this.height = window.innerHeight
-        this.p5.resizeCanvas(this.width, this.height);
+      },
+      onResize () {
+        this.initWindowSize()
+        this.p5.resizeCanvas(this.width, this.height)
+        this.fishes.forEach((fish) => {
+          fish.resizeCanvasSize(this.width, this.height)
+        })
+      },
+      displayFish(p){
+        this.fishes = Array.from({length: 10}, (_, i) => {
+          const type = Math.floor(Math.random() * this.fishType)
+          const fish = new Fish(p, this.width, this.height, this.fishImageMap[type])
+          fish.display()
+          return fish
+        })
       },
       preload(p){
-        for (let i = 0; i < this.fishType; i++) {
-          const fileName = this.fishType < 10 ? `/fish0${i + 1}.png` : `/fish${i + 1}.png`
-          for (let j = 0; j < 2; j++) {
-            this.fishImages.push(p.loadImage(fileName))
-          }
-        }
+        this.fishImageMap = Array.from({length: this.fishType}, (_, i) => {
+          const path = `/fish${i + 1}.svg`
+          return p.loadImage(path)
+        })
       },
       setup(p){
         return () => {
-          let canvas = p.createCanvas(this.width, this.height)
-          canvas.parent('#canvas')
+          this.render = p.createCanvas(this.width, this.height)
+          this.render.parent('#bg')
           this.displayFish(p)
         }
       },
       draw(p){
         return () => {
           p.clear()
-
-          this.fish.forEach((fish) => {
+          this.fishes.forEach((fish) => {
             fish.swim()
           })
-        }
-      },
-      displayFish(p){
-        for (let i = 0; i < this.fishImages.length; i++) {
-          const f = new Fish(p, this.width, this.height, this.fishImages[i])
-          this.fish.push(f)
-          f.display()
         }
       }
     }

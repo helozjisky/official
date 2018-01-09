@@ -20,7 +20,6 @@ module.exports = {
   },
   plugins: [
     { src: '~/plugins/scrollto', ssr: false },
-    { src: '~/plugins/waypoint', ssr: false },
     { src: '~/plugins/p5.js', ssr: false }
   ],
   modules: [
