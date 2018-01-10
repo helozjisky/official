@@ -1,33 +1,35 @@
 <template>
-  <div class='root'>
-    <h1 class='text-title'>
-      {{title}}
+  <div>
+    <h1 :class="['title', isBlack ? 'black' : 'white']">
+      <img :src="title" alt="">
     </h1>
   </div>
 </template>
 
 <script>
   export default {
-    props: ['title']
+    props: [
+      'title',
+      'type'
+    ],
+    computed: {
+      isBlack () {
+        return this.type === 'black'
+      }
+    }
   }
 </script>
 
-<style lang='stylus' scoped>
-  .root {
-    padding-top 40px
+<style scoped>
+  .title {
+    text-align: center;
+    padding-bottom: 50px;
+    margin-bottom: 30px;
   }
-
-  // md up
-  @media screen and (min-width: 960px) {
-    .root {
-      display none
-    }
+  .title.black {
+    background: url('/title-b.svg') no-repeat center bottom;
   }
-
-  .text-title {
-    font-weight 300
-    margin 0
-    font-size 3.2em
-    text-align center
+  .title.white {
+    background: url('/title-w.svg') no-repeat center bottom;
   }
 </style>

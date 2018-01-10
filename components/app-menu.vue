@@ -1,130 +1,72 @@
 <template>
-  <div class='root'>
-    <div class='scroll'>
-      <div class='link-root'>
-        <nuxt-link class='link' to='/'>
+  <div class="root">
+    <div class="inner">
+      <div class="links">
+        <div class="link" v-scroll-to="'#home'">
           Home
-        </nuxt-link>
-      </div>
-      <div class='link-root'>
-        <nuxt-link class='link' to='/about'>
-          About
-        </nuxt-link>
-      </div>
-      <div class='link-root'>
-        <nuxt-link class='link' to='/news'>
+        </div>
+        <div class="link" v-scroll-to="'#policy'">
+          Policy
+        </div>
+        <div class="link" v-scroll-to="'#news'">
           News
-        </nuxt-link>
-      </div>
-      <div class='link-root'>
-        <a
-            class='link'
-            target='_blank'
-            href='https://medium.com/websocket'>
-          Medium
-        </a>
-      </div>
-      <div class='link-root'>
-        <a
-            class='link'
-            target='_blank'
-            href='https://github.com/pixelgram'>
+        </div>
+        <div class="link" v-scroll-to="'#products'">
+          Products
+        </div>
+        <div class="link" v-scroll-to="'#about'">
+          About
+        </div>
+        <div class="link">
+          <a href="https://github.com/pixelgram" target="_blank" rel="noopener">
           GitHub
-        </a>
-      </div>
-      <div class='link-root'>
-         <a
-            class='link'
-            href='mailto:info@pixelgram.jp'>
-          Contact
-        </a>
+          </a>
+        </div>
+        <div class="link">
+          <a href="https://medium.com/pixelgram" target="_blank" rel="noopener">
+            Medium
+          </a>
+        </div>
+        <div class="link">
+          <a href="mailto:info@pixelgram.jp" >
+            Contact
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
-<style lang='stylus' scoped>
+<style scoped>
   .root {
-    z-index 120
+    position: absolute;
+    top: 31px;
+    right: 0;
+    width: 100%;
+    z-index: 11;
   }
-
-  @media screen and (max-width: 959.99px) {
+  .inner {
+    padding: 0 10px;
+    max-width: 980px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .links {
+    text-align: right;
+  }
+  .link {
+    display: inline-block;
+    margin: 0 8px;
+    cursor: pointer;
+    color: #222222;
+    font-size: 12px;
+  }
+  .link:hover, .link a:hover {
+    color: #009688;
+  }
+  @media screen and (max-width: 600px) {
     .root {
-      position fixed
-      top 45px
-      left 0
-      padding-left 10px
-      padding-right 10px
-      width 100%
-      overflow-x auto
-      overflow-y hidden
-      -webkit-overflow-scrolling touch
-      background rgba(245, 245, 245, 0.98)
-      box-shadow 0 2px 2px 0 rgba(0,0,0,.1);
+      display: none;
     }
-
-    .scroll {
-      width 440px
-    }
-
-    .link-root {
-      display inline-block
-    }
-
-    .link {
-      text-decoration none
-      letter-spacing 2px
-      color #0f2350
-      padding 10px
-      display block
-      position relative
-    }
-
-    .link::after {
-      content ''
-      display block
-      height 2px
-      position absolute
-      width 100%
-      bottom 0
-      left 0
-    }
-
-    .link.nuxt-link-exact-active::after {
-      background-color #009688
-    }
-
-    }
-
-  // pc
-  @media screen and (min-width: 960px) {
-    .root {
-      position fixed
-      top 0
-      left 0
-      padding-top 100px
-      padding-left 40px
-      width 200px
-      height 100%
-    }
-
-    .link-root {
-      margin 10px 0
-    }
-
-    .link {
-      text-decoration none
-      font-size 1.5rem
-      letter-spacing 2px
-      color #676767
-    }
-  }
-
-  .link:hover {
-    color #000
-  }
-
-  .nuxt-link-exact-active {
-    color #000
   }
 </style>

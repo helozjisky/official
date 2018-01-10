@@ -1,36 +1,74 @@
 <template>
-  <div class='root'>
-    <div class='inner'>
-      <div class='content'>
-        <item-news v-if='src' v-for='item in src' :item='item' :key="item.id" />
+  <div id="news" class="root">
+    <div class="inner">
+      <app-title title="/ttl_news.svg" type="black" />
+      <div class="news">
+        <app-news-item v-for="item in displayNews" :key="item.id" :news="item" />
       </div>
+      <app-pager :maxPage="maxPage" :currentPage="p" @change="onChange" />
     </div>
   </div>
 </template>
 
-<style lang='stylus' scoped>
-  .root {
-    padding-top 40px
-  }
-
-  .inner {
-    margin auto
-    max-width 500px
-    padding 0 10px
-  }
-
-  p.title {
-    font-size 30px
-  }
-</style>
-
 <script>
-  import itemNews from '~/components/item-news'
-
-  export default {
-    props: ['src'],
-    components: {
-      'item-news': itemNews
+import appTitle from '~/components/app-title'
+import appNewsItem from '~/components/app-news-item'
+import appPager from '~/components/app-pager'
+export default {
+  props: [
+    'news'
+  ],
+  data () {
+    return {
+      p: 1
+    }
+  },
+  components: {
+    appTitle,
+    appNewsItem,
+    appPager
+  },
+  methods: {
+    onChange (p) {
+      this.p = p
+    }
+  },
+  computed: {
+    per () {
+      return 3
+    },
+    offset () {
+      return (this.p - 1) * this.per
+    },
+    maxCount () {
+      return this.news.length
+    },
+    maxPage () {
+      return Math.ceil(this.maxCount / this.per)
+    },
+    displayNews () {
+      return this.news.slice(this.offset, this.offset + this.per)
     }
   }
+}
 </script>
+
+
+<style scoped>
+  .root {
+    background: #fff;
+    padding: 120px 0;
+    border-bottom: dotted 2px #999999;
+  }
+  .inner {
+    max-width: 652px;
+    width: 100%;
+    padding: 0 20px;
+    margin: 0 auto;
+  }
+  @media screen and (max-width: 600px){
+    .root {
+      padding: 60px 0;
+    }
+  }
+</style>

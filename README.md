@@ -1,6 +1,8 @@
-# pixelgram.now.sh
+# official
 
-> Nuxt.js project
+> official website of Pixelgram
+
+![mock](https://user-images.githubusercontent.com/12339312/34508561-37c43566-f084-11e7-8251-1527049cf479.jpg)
 
 ## Build Setup
 

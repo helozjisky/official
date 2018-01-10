@@ -1,41 +1,27 @@
 <template>
-  <div>
-    <app-header />
+  <div class="root">
+    <app-logo />
     <app-menu />
-    <div class='app-content'>
-      <nuxt />
-    </div>
-    <app-anim />
+    <nuxt />
     <app-footer />
   </div>
 </template>
 
 <script>
-  import appAnim from '~/components/app-anim'
-  import appFooter from '~/components/app-footer'
-  import appHeader from '~/components/app-header'
+  import appLogo from '~/components/app-logo'
   import appMenu from '~/components/app-menu'
-
+  import appFooter from '~/components/app-footer'
   export default {
     components: {
-      'app-anim': appAnim,
-      'app-footer': appFooter,
-      'app-header': appHeader,
-      'app-menu': appMenu
+      appLogo,
+      appMenu,
+      appFooter,
     },
-    head () {
-      return {
-        link: [
-          {rel: 'stylesheet', href: '//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono'}
-        ]
-      }
-    }
   }
 </script>
 
 <style>
   html {
-    font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
     font-size: 15px;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
@@ -45,25 +31,24 @@
     color: #000;
     word-spacing: 1.5px;
     box-sizing: border-box;
-    background-image: url(/grid/grid12.png);
-    background-color: #f5f5f5;
+    background-color: #fff;
+    font-family:"Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
   }
 
   *, * before, * after {
     box-sizing: border-box;
     margin: 0;
+    max-width: 100%;
+    text-decoration: none;
+    color: #000;
   }
 
-  @media screen and (min-width: 960px) {
-    .app-content {
-      padding-left: 200px;
-    }
+  ::selection {
+    background: #009688;
+    color: #fff;
   }
 
-  @media screen and (max-width: 959.99px) {
-    .app-content {
-      padding-top: calc(50 + 39)px;
-    }
+  .root {
+    position: relative;
   }
-
 </style>

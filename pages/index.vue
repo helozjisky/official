@@ -1,52 +1,46 @@
 <template>
-  <div class='root'>
-    <section class='contents'>
-      <h1 class="contents__copy">Pixelgramはインターネットにあなたの居場所を作ります</h1>
-    </section>
+  <div class="root">
+    <app-mv />
+    <app-policy />
+    <app-news :news="news" />
+    <app-products :products="products" />
+    <app-about />
   </div>
 </template>
 
 <script>
-  import { mapMutations } from 'vuex'
+  import appMv from '~/components/app-mv'
+  import appPolicy from '~/components/app-policy'
   import appNews from '~/components/app-news'
-
+  import appProducts from '~/components/app-products'
+  import appAbout from '~/components/app-about'
   export default {
     components: {
-      'app-news': appNews
+      appMv,
+      appPolicy,
+      appNews,
+      appProducts,
+      appAbout
     },
     computed: {
-      allNews () {
-        return this.$store.state.scaphold.allNews
+      news () {
+        return this.$store.state.news
+      },
+      products () {
+        return this.$store.state.products
       }
     },
-    methods: {
-      ...mapMutations({
-        queryAllNews: 'scaphold/queryAllNews'
-      })
-    },
-    head () {
-      return {
-        title: 'Pixelgram'
+    async fetch ({store}) {
+      if (!store.state.news) {
+        await store.dispatch('fetchNews')
       }
-    },
-    fetch ({store, params}) {
-      if (!store.state.scaphold.allNews) {
-        return store.dispatch('scaphold/queryAllNews')
+      if (!store.state.products) {
+        await store.dispatch('fetchProducts')
       }
     }
   }
 </script>
 
 <style scoped>
-  .root {
-    padding: 0 10px;
-  }
-  .contents {
-    padding: 150px 10px;
-  }
-  .contents__copy {
-    font-size: 1rem;
-    line-height: 2;
-  }
 </style>
 
