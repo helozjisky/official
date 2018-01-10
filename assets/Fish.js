@@ -53,11 +53,11 @@ class Fish {
   edge () {
     if (this.location.x > this.canvasWidth + (this.width / 2)) {
       this.location.x = 0 + (this.width / 2) * -1
-      this.location.y = this.p.random(0, this.canvasHeight)
+      this.location.y = this.p.random(50, this.canvasHeight + 50)
     }
     if (this.location.x + (this.width / 2) < 0) {
       this.location.x = this.canvasWidth + (this.width / 2)
-      this.location.y = this.p.random(0, this.canvasHeight)
+      this.location.y = this.p.random(50, this.canvasHeight + 50)
     }
   }
 

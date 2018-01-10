@@ -70,7 +70,6 @@
     border-right: dotted 3px #999999;
   }
   .link .url{
-    font-family:"Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
     color: #fff;
     font-size: 12px;
     margin-top: 15px;

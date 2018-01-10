@@ -85,7 +85,6 @@ export default {
   }
   .row {
     display: flex;
-    font-family:"Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
     font-size: 12px;
   }
   .row:not(:last-child) {

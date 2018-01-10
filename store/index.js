@@ -31,8 +31,8 @@ export const queryProducts = gql`query {
 `
 
 export const state = () => ({
-  news: [],
-  products: []
+  news: null,
+  products: null
 })
 
 export const mutations = {

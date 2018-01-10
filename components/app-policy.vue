@@ -36,7 +36,6 @@ export default {
     margin: 0 auto;
   }
   .copy {
-    font-family:"Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
     text-align: center;
     font-size: 12px;
     line-height: 2;

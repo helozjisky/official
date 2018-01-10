@@ -88,12 +88,10 @@
     background-size: 1200px;
     overflow: hidden;
   }
-  #canvas {
+  #bg {
     position: absolute;
-    max-width: calc(100% + 100px);
-    min-width: calc(100% + 100px);
     top: 0;
-    left: -50px;
+    left: 0;
     z-index: 1;
   }
   .moon {

@@ -32,6 +32,7 @@
     word-spacing: 1.5px;
     box-sizing: border-box;
     background-color: #fff;
+    font-family:"Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
   }
 
   *, * before, * after {

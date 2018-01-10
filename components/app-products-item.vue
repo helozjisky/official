@@ -11,11 +11,11 @@
         {{product.detail}}
       </div>
       <div class="releasedAt">
-        リリース: {{toDateFormat(product.released_at)}}
+        リリース: {{toDateFormat(product.releasedAt)}}
       </div>
       <div class="link">
         <span class="text">詳細</span>
-        <img src="/arrow_r.svg" alt="">
+        <img class="arrow" src="/arrow_r.svg" alt="">
         <a class="href" :href="product.href" target="_blank" rel="noopener">{{product.href}}</a>
       </div>
     </div>
@@ -122,6 +122,9 @@
       margin-bottom: 10px;
       border-bottom: none;
       padding-bottom: 0;
+    }
+    .text, .arrow {
+      display: none;
     }
   }
 </style>

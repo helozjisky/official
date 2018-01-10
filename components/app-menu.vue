@@ -28,7 +28,7 @@
           </a>
         </div>
         <div class="link">
-          <a href="" >
+          <a href="mailto:info@pixelgram.jp" >
             Contact
           </a>
         </div>
@@ -60,6 +60,9 @@
     cursor: pointer;
     color: #222222;
     font-size: 12px;
+  }
+  .link:hover, .link a:hover {
+    color: #009688;
   }
   @media screen and (max-width: 600px) {
     .root {
