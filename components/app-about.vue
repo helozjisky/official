@@ -9,7 +9,16 @@
         <div class="info">
           <div v-for="item in about" :key="item.id" class="row">
             <div class="name">{{item.name}}</div>
-            <div class="value">{{item.value}}</div>
+            <div class="value">
+              <div v-if="Array.isArray(item.value)">
+                <div v-for="value in item.value" :key="value.id">
+                  {{value}}
+                </div>
+              </div>
+              <div v-else>
+                {{item.value}}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -24,12 +33,18 @@ export default {
     appTitle
   },
   computed: {
-    // @TODO cms 切り替え
     about () {
       return [
         {
           name: '代表者',
           value: '上平 千晶'
+        },
+        {
+          name: '役員',
+          value: [
+            '濱田 真旗',
+            '小川 裕暉'
+          ]
         },
         {
           name: '資本金',
