@@ -1,5 +1,5 @@
 <template>
-  <div class="root">
+  <div id="footer" class="root">
     <div class="inner">
       <div class="links">
         <div class="link">

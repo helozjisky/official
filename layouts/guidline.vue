@@ -1,7 +1,6 @@
 <template>
   <div class="root">
     <app-logo />
-    <app-menu />
     <nuxt />
     <app-footer />
   </div>
@@ -9,13 +8,11 @@
 
 <script>
   import appLogo from '~/components/app-logo'
-  import appMenu from '~/components/app-menu'
   import appPagetop from '~/components/app-pagetop'
   import appFooter from '~/components/app-footer'
   export default {
     components: {
       appLogo,
-      appMenu,
       appPagetop,
       appFooter,
     },
@@ -35,6 +32,7 @@
     box-sizing: border-box;
     background-color: #fff;
     font-family:"Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+    min-width: 960px;
   }
 
   *, * before, * after {

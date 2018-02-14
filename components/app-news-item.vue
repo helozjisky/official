@@ -6,7 +6,7 @@
     <div class="title">
       {{news.title}}
     </div>
-    <div class="detail" v-html="news.detail"></div>
+    <div class="detail" v-text="news.detail"></div>
   </div>
 </template>
 

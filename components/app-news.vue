@@ -14,6 +14,7 @@
 import appTitle from '~/components/app-title'
 import appNewsItem from '~/components/app-news-item'
 import appPager from '~/components/app-pager'
+import moment from 'moment'
 export default {
   props: [
     'news'
@@ -47,7 +48,10 @@ export default {
       return Math.ceil(this.maxCount / this.per)
     },
     displayNews () {
-      return this.news.slice(this.offset, this.offset + this.per)
+      const news = [...this.news].sort((a, b) => {
+        return moment(a.datetime).isAfter(moment(b.datetime)) ? -1 : 1
+      })
+      return news.slice(this.offset, this.offset + this.per)
     }
   }
 }
