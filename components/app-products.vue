@@ -3,13 +3,14 @@
     <div class="inner">
       <app-title title="/ttl_products.svg" type="black" />
       <div class="products">
-        <app-products-item v-for="product in products" :key="product.id" :product="product" />
+        <app-products-item v-for="product in displayProducts" :key="product.id" :product="product" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import moment from 'moment'
 import appTitle from '~/components/app-title'
 import appProductsItem from '~/components/app-products-item'
 export default {
@@ -20,6 +21,13 @@ export default {
     appTitle,
     appProductsItem
   },
+  computed: {
+    displayProducts () {
+      return [...this.products].sort((a, b) => {
+        return moment(a.datetime).isAfter(moment(b.datetime)) ? -1 : 1
+      })
+    }
+  }
 }
 </script>
 

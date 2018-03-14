@@ -59,6 +59,7 @@
   .image {
     max-width: 365px;
     width: 100%;
+    border: 2px dotted #ddd;
   }
   .name {
     font-weight: bold;
