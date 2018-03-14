@@ -25,9 +25,6 @@ module.exports = {
   modules: [
     '@nuxtjs/pwa'
   ],
-  workbox: {
-    dev: true
-  },
   meta: {
     mobileAppIOS: true,
     viewport: 'width=device-width, initial-scale=1',
